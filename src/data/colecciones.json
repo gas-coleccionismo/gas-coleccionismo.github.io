@@ -1,0 +1,32 @@
+{
+  "colecciones": [
+    {
+      "numero": "001",
+      "titulo": "Fot. Viñets Ibiza",
+      "pie_foto": "Fotografía de Viñets, tomada en Ibiza alrededor de 1910.",
+      "items": [
+        {
+          "id": "1",
+          "titulo": "Titulo de la postal",
+          "imagen": "assets/colecciones/001/001-01.jpg",
+          "tipo_reverso": "Blanco",
+          "precio_compra": 3.5,
+          "extra": {
+            "editor": "Hauser y Menet",
+            "estado": "Muy bueno"
+          }
+        },
+        {
+          "id": "2",
+          "titulo": "Titulo de la postal",
+          "tipo_reverso": "Blanco",
+          "precio_compra": 3.5,
+          "extra": {
+            "editor": "Hauser y Menet",
+            "estado": "Muy bueno"
+          }
+        }
+      ]
+    }
+  ]
+}
