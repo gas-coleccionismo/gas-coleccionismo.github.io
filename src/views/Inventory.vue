@@ -9,7 +9,8 @@ function parseId(id) {
   }
 }
 
-function analyzeCollection(items) {
+function analyzeCollection(collection) {
+  const items = collection.items
   const parsed = items.map(i => parseId(i.id))
   const existing = new Set(items.map(i => i.id))
 
@@ -18,7 +19,7 @@ function analyzeCollection(items) {
 
   const result = []
 
-  for (let n = 1; n <= max; n++) {
+  for (let n = collection.min_number || 1; n <= max; n++) {
     const baseId = String(n)
     result.push({
       id: baseId,
@@ -59,23 +60,20 @@ function analyzeCollection(items) {
       class="inventory-collection"
     >
       <h2>
-      {{ collection.number }} – {{ collection.title  }}
+      {{ collection.title  }}
       </h2>
 
       <div class="inventory-grid">
-        <div
-          v-for="item in analyzeCollection(collection.items)"
+        <component
+          v-for="item in analyzeCollection(collection)"
+          :is="item.have ? 'router-link' : 'div'"
           :key="item.id"
           class="inventory-item"
           :class="{ have: item.have, missing: !item.have }"
+          v-bind="item.have ? { to: `/collection/${collection.number}/item/${item.id}` } : {}"
         >
-          <router-link v-if="item.have" :to="`collection/${collection.number}/item/${item.id}`">
-            {{ item.id }}
-          </router-link>
-          <span v-else>
-            {{ item.id }}
-          </span>
-        </div>
+          {{ item.id }}
+        </component>
       </div>
     </div>
   </section>
@@ -107,10 +105,14 @@ function analyzeCollection(items) {
 .inventory-item.have {
   background: #d1fae5;
   color: #065f46;
+  text-decoration: none;
 }
 
 .inventory-item.missing {
   background: #fee2e2;
   color: #991b1b;
+}
+.inventory-item.missing:hover {
+  cursor: not-allowed;
 }
 </style>

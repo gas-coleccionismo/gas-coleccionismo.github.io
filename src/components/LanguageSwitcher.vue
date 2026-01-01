@@ -27,10 +27,15 @@ function setLocale(l) {
 }
 .lang-btn {
   border: 1px solid transparent;
+  border-radius: 5px;
   background: none;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
   font-size: 0.85rem;
+}
+.lang-btn:hover {
+  border-color: #ccc;
+  background: #e5e5e5;
 }
 .lang-btn.active {
   border-color: #ddd;

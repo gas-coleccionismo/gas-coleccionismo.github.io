@@ -10,7 +10,7 @@
         :src="resolveImage(collection.items?.[0]?.image)"
         :alt="collection.title"
       />
-      <h2>{{ collection.number }} — {{ collection.title }}</h2>
+      <h2>{{ collection.title }}</h2>
       <p>{{ collection.description }}</p>
     </article>
   </main>
