@@ -1,10 +1,13 @@
 <template>
   <footer class="footer">
-    <!-- contenido futuro -->
+    <nav>
+        <RouterLink to="/inventario">Inventario</RouterLink>
+    </nav>
   </footer>
 </template>
 
 <script setup>
+
 </script>
 
 <style scoped>

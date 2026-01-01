@@ -3,7 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from './views/Home.vue'
 import Collection from './views/Collection.vue'
 import Item from './views/Item.vue'
-import NotFound from './views/NotFound.vue'
+import Inventory from './views/Inventory.vue'
+
 
 const routes = [
   {
@@ -20,7 +21,13 @@ const routes = [
     path: '/coleccion/:numero/item/:itemId',
     name: 'item',
     component: Item
+  },
+  {
+    path: '/inventario',
+    name: 'Inventario',
+    component: Inventory
   }
+
 ]
 
 const router = createRouter({
