@@ -1,6 +1,9 @@
 <template>
   <header class="header">
-    <Breadcrumbs />
+    <div class="nav">
+      <Breadcrumbs />
+      <LanguageSwitcher />
+    </div>
   </header>
 </template>
 
@@ -8,24 +11,9 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Breadcrumbs from './Breadcrumbs.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const route = useRoute()
-
-const backLink = computed(() => {
-  if (route.name === 'item') {
-    return `/coleccion/${route.params.numero}`
-  }
-  if (route.name === 'collection') {
-    return '/'
-  }
-  return null
-})
-
-const backLabel = computed(() => {
-  if (route.name === 'item') return 'Volver a la colección'
-  if (route.name === 'collection') return 'Volver al inicio'
-  return ''
-})
 </script>
 
 <style scoped>
@@ -37,6 +25,7 @@ const backLabel = computed(() => {
 
 .nav {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 0.25rem;
 }

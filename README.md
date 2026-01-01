@@ -1,68 +1,69 @@
-# Colección de Postales
+# Postcard Collection
 
-Este proyecto es un sitio estático publicado con GitHub Pages para mostrar colecciones de postales.
+This project is a static site published with GitHub Pages to showcase postcard collections.
 
-## Estructura del proyecto
+## Project structure
 
 ```
-public/assets/colecciones/ → imágenes
-src/data/colecciones.json → TODOS los datos
-src/views/ → páginas
-````
+public/assets/collections/ → images
+src/data/collections.json → collection data
+src/views/ → pages / views
+```
 
 
-## Añadir una colección
+## Add a collection
 
-1. Abre `src/data/colecciones.json`
-2. Añade un nuevo objeto dentro de `colecciones`
+1. Open `src/data/collections.json`
+2. Add a new object inside `collections`
 
-Campos obligatorios:
-- `numero`
-- `titulo`
-- `pie_foto`
+Required fields:
+- `number` (number)
+- `title` (title)
+- `description` (photo caption)
 - `items`
 
-## Añadir un ítem
+## Add an item
 
-Dentro de `items`:
+Inside `items`:
 
-Campos recomendados:
-- `id` (puede ser `5b`, `10c`, etc.)
-- `titulo`
-- `imagen` (ruta manual)
-- `tipo_reverso`
+Recommended fields:
+- `id` (can be `5b`, `10c`, etc.)
+- `titulo` (title)
+- `imagen` (manual path)
+- `tipo_reverso` (back type)
 
-Opcionales:
-- `precio_compra`
-- `extra` (objeto libre clave:valor)
+Optional:
+- `precio_compra` (purchase price)
+- `extra` (free-form object of key:value pairs)
 
-Ejemplo:
+Example:
 
 ```json
 {
   "id": "3",
   "titulo": "Catedral",
-  "imagen": "/assets/colecciones/002/002-03.jpg",
+  "imagen": "/assets/collections/002/002-03.jpg",
   "tipo_reverso": "Dividido",
   "extra": {
     "editor": "XYZ",
     "año": "1912"
   }
 }
-
-Publicación
 ```
+
+Deployment
+
+```bash
 npm install
 npm run build
 git push
 ```
 
-GitHub Pages debe apuntar a la carpeta dist.
+GitHub Pages should point to the `dist` folder.
 
-Filosofía del proyecto
+Project philosophy
 
-Un único archivo de datos
-
-Cero lógica al añadir contenido
-
-Máxima flexibilidad para campos futuros
+- Single data file
+- Zero logic required when adding content
+- Maximum flexibility for future fields
+```

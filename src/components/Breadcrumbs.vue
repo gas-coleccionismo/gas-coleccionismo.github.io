@@ -2,20 +2,20 @@
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <ul>
       <li>
-        <router-link to="/">Inicio</router-link>
+        <router-link to="/">{{ t('home') }}</router-link>
       </li>
 
-      <li v-if="coleccion">
+      <li v-if="collection">
         <span>/ </span>
-        <router-link :to="`/coleccion/${coleccion.numero}`">
-          {{ coleccion.titulo }}
+        <router-link :to="`/collection/${collection.number}`">
+          {{ collection.title }}
         </router-link>
       </li>
 
       <li v-if="item">
         <span>/ </span>
         <span class="current">
-          {{ item.titulo }}
+          {{ item.title }}
         </span>
       </li>
     </ul>
@@ -25,18 +25,20 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import data from '../data/colecciones.json'
+import { useI18n } from 'vue-i18n'
+import data from '../data/collections.json'
 
 const route = useRoute()
+const { t } = useI18n()
 
-const coleccion = computed(() => {
-  if (!route.params.numero) return null
-  return data.colecciones.find(c => c.numero === route.params.numero)
+const collection = computed(() => {
+  if (!route.params.number) return null
+  return data.collections.find(c => c.number === route.params.number)
 })
 
 const item = computed(() => {
-  if (!coleccion.value || !route.params.itemId) return null
-  return coleccion.value.items.find(i => i.id === route.params.itemId)
+  if (!collection.value || !route.params.itemId) return null
+  return collection.value.items.find(i => i.id === route.params.itemId)
 })
 </script>
 

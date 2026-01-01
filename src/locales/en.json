@@ -1,0 +1,18 @@
+{
+  "back": {
+    "collection": "Back to collection",
+    "home": "Back to home"
+  },
+  "lang": {
+    "en": "English",
+    "es": "Español"
+  },
+  "home": "Home",
+  "item": {
+    "type": "Type of reverse",
+    "price": "Purchase price",
+    "additional_info": "Additional Information",
+    "lorem": "lorem-en"
+  },
+  "catalog": "Catalog"
+}

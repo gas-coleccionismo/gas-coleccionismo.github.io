@@ -1,24 +1,24 @@
 <template>
   <section v-if="item">
     <img
-      :src="resolveImage(item.imagen)"
-      :alt="item.titulo"
+      :src="resolveImage(item.image)"
+      :alt="item.title"
       class="hero"
     />
 
-    <h1>{{ item.titulo }}</h1>
+    <h1>{{ item.title }}</h1>
     <p><strong>ID:</strong> {{ item.id }}</p>
-    <p><strong>Tipo de reverso:</strong> {{ item.tipo_reverso }}</p>
+    <p><strong>{{ t('item.type') }}:</strong> {{ item.type }}</p>
 
-    <p v-if="item.precio_compra !== undefined">
-      <strong>Precio de compra:</strong> {{ item.precio_compra }} €
+    <p v-if="item.price !== undefined">
+      <strong>{{ t('item.price') }}:</strong> {{ item.price }} €
     </p>
 
     <section v-if="item.extra">
-      <h2>Información adicional</h2>
+      <h2>{{ t('item.additional_info') }}</h2>
       <ul>
         <li v-for="(value, key) in item.extra" :key="key">
-          <strong>{{ key }}:</strong> {{ value }}
+          <strong>{{ t(`item.${key}`, key) }}:</strong> {{ value }}
         </li>
       </ul>
     </section>
@@ -27,14 +27,17 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { resolveImage } from '../utils/images'
-import data from '../data/colecciones.json'
+import data from '../data/collections.json'
 
 const route = useRoute()
-const { numero, itemId } = route.params
+const { t } = useI18n()
 
-const coleccion = data.colecciones.find(c => c.numero === numero)
-const item = coleccion?.items.find(i => i.id === itemId)
+const { number, itemId } = route.params
+
+const collection = data.collections.find(c => c.number === number)
+const item = collection?.items.find(i => i.id === itemId)
 </script>
 
 <style scoped>

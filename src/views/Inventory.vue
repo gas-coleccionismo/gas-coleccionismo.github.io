@@ -1,5 +1,5 @@
 <script setup>
-import data from '../data/colecciones.json'
+import data from '../data/collections.json'
 
 function parseId(id) {
   const match = id.match(/^(\d+)([a-z])?$/i)
@@ -54,22 +54,22 @@ function analyzeCollection(items) {
     <h1>Inventario</h1>
 
     <div
-      v-for="coleccion in data.colecciones"
-      :key="coleccion.numero"
+      v-for="collection in data.collections"
+      :key="collection.number"
       class="inventory-collection"
     >
       <h2>
-        {{ coleccion.numero }} – {{ coleccion.titulo }}
+      {{ collection.number }} – {{ collection.title  }}
       </h2>
 
       <div class="inventory-grid">
         <div
-          v-for="item in analyzeCollection(coleccion.items)"
+          v-for="item in analyzeCollection(collection.items)"
           :key="item.id"
           class="inventory-item"
           :class="{ have: item.have, missing: !item.have }"
         >
-          <router-link v-if="item.have" :to="`coleccion/${coleccion.numero}/item/${item.id}`">
+          <router-link v-if="item.have" :to="`collection/${collection.number}/item/${item.id}`">
             {{ item.id }}
           </router-link>
           <span v-else>

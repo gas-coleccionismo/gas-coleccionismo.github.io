@@ -1,17 +1,17 @@
 <template>
   <main class="grid">
     <article
-      v-for="coleccion in colecciones"
-      :key="coleccion.numero"
+      v-for="collection in collections"
+      :key="collection.number"
       class="card"
-      @click="goToCollection(coleccion.numero)"
+      @click="goToCollection(collection.number)"
     >
       <img
-        :src="resolveImage(coleccion.items?.[0]?.imagen)"
-        :alt="coleccion.titulo"
+        :src="resolveImage(collection.items?.[0]?.image)"
+        :alt="collection.title"
       />
-      <h2>{{ coleccion.numero }} — {{ coleccion.titulo }}</h2>
-      <p>{{ coleccion.pie_foto }}</p>
+      <h2>{{ collection.number }} — {{ collection.title }}</h2>
+      <p>{{ collection.description }}</p>
     </article>
   </main>
 </template>
@@ -19,13 +19,13 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { resolveImage } from '../utils/images'
-import data from '../data/colecciones.json'
+import data from '../data/collections.json'
 
 const router = useRouter()
-const colecciones = data.colecciones
+const collections = data.collections
 
-function goToCollection(numero) {
-  router.push(`/coleccion/${numero}`)
+function goToCollection(number) {
+  router.push(`/collection/${number}`)
 }
 </script>
 

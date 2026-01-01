@@ -1,5 +1,5 @@
 {
-  "name": "coleccionismo",
+  "name": "collectionism",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "vue": "^3.4.0",
+    "vue-i18n": "^9.3.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

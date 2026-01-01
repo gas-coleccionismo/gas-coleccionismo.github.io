@@ -1,23 +1,23 @@
 <template>
-  <section v-if="coleccion">
+  <section v-if="collection">
     <header>
-      <h1>{{ coleccion.titulo }}</h1>
-      <p>{{ coleccion.pie_foto }}</p>
+      <h1>{{ collection.title }}</h1>
+      <p>{{ collection.description }}</p>
     </header>
 
     <main class="grid">
       <article
-        v-for="item in coleccion.items"
+        v-for="item in collection.items"
         :key="item.id"
         class="card"
         @click="goToItem(item.id)"
       >
         
         <img
-          :src="resolveImage(item.imagen)"
-          :alt="item.titulo"
+          :src="resolveImage(item.image)"
+          :alt="item.title"
         />
-        <h3>{{ item.id }} — {{ item.titulo }}</h3>
+        <h3>{{ item.id }} — {{ item.title }}</h3>
       </article>
     </main>
   </section>
@@ -26,16 +26,16 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
 import { resolveImage } from '../utils/images'
-import data from '../data/colecciones.json'
+import data from '../data/collections.json'
 
 const route = useRoute()
 const router = useRouter()
 
-const numero = route.params.numero
-const coleccion = data.colecciones.find(c => c.numero === numero)
+const number = route.params.number
+const collection = data.collections.find(c => c.number === number)
 
 function goToItem(itemId) {
-  router.push(`/coleccion/${numero}/item/${itemId}`)
+  router.push(`/collection/${number}/item/${itemId}`)
 }
 </script>
 
